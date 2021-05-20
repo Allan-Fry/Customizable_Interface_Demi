@@ -30,3 +30,4 @@ create-react-app not funtioning as intended.
         npx create-react-app my-app
     Based on this article 
         https://stackoverflow.com/questions/59260031/public-src-and-scripts-folder-not-created-while-using-create-react-app.
+I had issues with unreachable code, this is caused by adding a line between the return statement and the brakets.

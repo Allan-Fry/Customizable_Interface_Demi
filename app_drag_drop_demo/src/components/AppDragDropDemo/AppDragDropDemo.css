@@ -1,0 +1,37 @@
+.container-drag{
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.header{
+    text-align: center;
+    background-color: blanchedalmond;
+    margin: 0px;
+    padding: 0px;
+}
+
+.wip{
+
+background-color: azure;
+display: inline-block;
+}
+
+.task-header{
+background-color: blanchedalmond;
+text-align: center;
+
+}
+
+.droppable{
+    display: inline-block;
+background-color: black;
+
+}
+
+.draggable{
+
+text-align: center;
+
+
+}
