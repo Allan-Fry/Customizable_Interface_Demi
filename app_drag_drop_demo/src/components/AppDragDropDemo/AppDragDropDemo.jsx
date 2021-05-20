@@ -101,7 +101,7 @@ export default class AppDragDropDemo extends Component
                     <Col />
                     <Col className="droppable" 
                     onDragOver={(e)=>this.onDragOver(e)}
-                    onDrop={(e)=>this.onDragOver(e, "complete")}>
+                    onDrop={(e)=>this.onDrop(e, "complete")}>
                            
                         <Row>
                             <Col tag='h3' className="task-header">
