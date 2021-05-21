@@ -14,7 +14,7 @@ export default class CustomToast extends Component{
                     toastID: "1",
                     bgcolor: "yellow",
                     column: "col1",
-                    header: "",
+                    header: "Worst",
                     body: ""
                 },
                 {
@@ -28,7 +28,7 @@ export default class CustomToast extends Component{
                     toastID: "3",
                     bgcolor: "red",
                     column: "col3",
-                    header: "",
+                    header: "Other",
                     body: "This is called a toast."
                 }
             ]
@@ -37,24 +37,42 @@ export default class CustomToast extends Component{
     onDragOver = (ev) => {
         ev.preventDefault();
     }
-    onDragStart = (ev, id) => {
-        console.log('dragstart:',id);
+    onDragStart = (ev, header, id) => {
+        console.log('dragstart:',id,header);
+        ev.dataTransfer.setData("header", header);
         ev.dataTransfer.setData("id", id);
+        console.log(ev.dataTransfer.getData("header"));
+        console.log(ev.dataTransfer.getData("id"));
     }
-    onDrop = (ev, col) => {
-        let id = ev.dataTransfer.getData("id");
+    onDropHeader = (ev, dropHeader, dropID) => {
+        let tempDragHeader = ev.dataTransfer.getData("header");
+        let dragID =ev.dataTransfer.getData("id");
+        let tempDropHeader = dropHeader;
 
-        let toasts = this.state.toasts.filter((toast) => {
-            if (toast.toastID === id) {
-                toast.column = col;
+        console.log('drag',tempDragHeader, dragID, 'drop', tempDropHeader, dropID)
+
+        let toasts = this.state.toasts.filter((toast) =>{
+
+            if(toast.toastID === dropID){
+                toast.header = tempDragHeader;
+
             }
+            if(toast.toastID === dragID){
+                toast.header = tempDropHeader;
+            }
+            console.log(toast);
             return toast;
-        });
 
+        });
         this.setState({
             ...this.state,
             toasts
         });
+
+
+    
+
+       
     }    
 
 
@@ -73,12 +91,13 @@ export default class CustomToast extends Component{
                 toasts[t.column].push(
                     <Toast 
                     key={t.toastID}
-                    onDragStart = {(e) => this.onDragStart(e, t.toastID)}
-                    draggable
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>{this.onDropHeader(e, t.header, t.toastID)}}
                     style={{backgroundColor: t.bgcolor}}
                     >
                         <ToastHeader
-                        
+                        draggable
+                        onDragStart = {(e) => this.onDragStart(e, t.header, t.toastID)}
                         >
                             {t.header}
                         </ToastHeader>
@@ -100,22 +119,13 @@ export default class CustomToast extends Component{
             return(
                 <Container>
                     <Row>
-                        <Col
-                        onDragOver={(e)=>this.onDragOver(e)}
-                        onDrop={(e)=>{this.onDrop(e, "col1")}}
-                        >
+                        <Col>
                             {toasts.col1}
                         </Col>
-                        <Col
-                        onDragOver={(e)=>this.onDragOver(e)}
-                        onDrop={(e)=>{this.onDrop(e, "col2")}}
-                        >
+                        <Col>
                             {toasts.col2}
                         </Col>
-                        <Col
-                        onDragOver={(e)=>this.onDragOver(e)}
-                        onDrop={(e)=>{this.onDrop(e, "col3")}}
-                        >
+                        <Col>
                             {toasts.col3}
                         </Col>
                     </Row>
