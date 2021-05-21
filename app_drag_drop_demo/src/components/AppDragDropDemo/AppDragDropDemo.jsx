@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {Toast, ToastHeader, Container, Row, Col} from 'reactstrap';
 import './AppDragDropDemo.css';
 
-export default class AppDragDropDemo extends Component 
-{  
+export default class AppDragDropDemo extends Component{  
     state = 
     { 
         tasks: [
