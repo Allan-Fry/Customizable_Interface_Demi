@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Toast, ToastHeader, ToastBody, Container, Row, Col } from 'reactstrap';
+import {  Container, Row, Col } from 'reactstrap';
+import ToastCard from '../ToastCard/ToastCard';
 import './CustomToast';
 
 
@@ -89,24 +90,38 @@ export default class CustomToast extends Component{
 
             this.state.toasts.forEach((t) => {
                 toasts[t.column].push(
-                    <Toast 
+
+
+
+
+                    <ToastCard
+                    toast={t}
                     key={t.toastID}
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>{this.onDropHeader(e, t.header, t.toastID)}}
-                    style={{backgroundColor: t.bgcolor}}
                     >
-                        <ToastHeader
-                        draggable
-                        onDragStart = {(e) => this.onDragStart(e, t.header, t.toastID)}
-                        >
-                            {t.header}
-                        </ToastHeader>
-                        <ToastBody
+
+
+
+                    </ToastCard>
+                    // <Toast 
+                    // 
+                    // onDragOver={(e)=>this.onDragOver(e)}
+                    // onDrop={(e)=>{this.onDropHeader(e, t.header, t.toastID)}}
+                  
+                    // >
+                    //     <ToastHeader
+                    //     draggable
+                    //     onDragStart = {(e) => this.onDragStart(e, t.header, t.toastID)}
+                    //     >
+                    //         {t.header}
+                    //     </ToastHeader>
+                    //     <ToastBody
                         
-                        >
-                            {t.body}
-                        </ToastBody>
-                    </Toast>
+                    //     >
+                    //         {t.body}
+                    //     </ToastBody>
+                    // </Toast>
 
 
                 )
