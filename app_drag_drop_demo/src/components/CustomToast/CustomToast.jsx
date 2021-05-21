@@ -35,9 +35,7 @@ export default class CustomToast extends Component{
             ]
     }
 
-    onDragOver = (ev) => {
-        ev.preventDefault();
-    }
+   
     onDragStart = (ev, header, id) => {
         console.log('dragstart:',id,header);
         ev.dataTransfer.setData("header", header);
@@ -97,6 +95,7 @@ export default class CustomToast extends Component{
                     <ToastCard
                     toast={t}
                     key={t.toastID}
+                    onDragStart = {(e) => this.onDragStart(e, t.header, t.toastID)}
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>{this.onDropHeader(e, t.header, t.toastID)}}
                     >
