@@ -2,77 +2,22 @@ import { Component } from "react";
 import { Button, Col, Container, Row } from "reactstrap";
 import'./ExpandableLayout.css';
 
+
 export default class ExpandableLayout extends Component{
 
 
-        state = {
-            gridSpace: [
-                {
-                    pageName:"firstPage",
-                    rowID:"0",
-                    area:[{
-                        colName:"col1",
-                    },
-                    {
-                        colName:"col2"
-                    },
-                    {
-                        colName:"col3"
-                    }
-                    ]
-                },
-                {
-                    pageName:"firstPage",
-                    rowID:"1",
-                    area:[{
-                        colName:"col1"
-                    },
-                    {
-                        colName:"col2"
-                    },
-                    {
-                        colName:"col3"
-                    }
-                    ]
-                },
-                {
-                    pageName:"firstPage",
-                    rowID:"2",
-                    area:[{
-                        colName:"col1"
-                    },
-                    {
-                        colName:"col2"
-                    },
-                    {
-                        colName:"col3"
-                    }
-                    ]
-                }
-
-
-            ]
-
-
-
-
-
-        }
 
 
         addNewCol = (e) =>{
-            let previousArea = this.state.gridSpace[e].area;
-            let nextID = previousArea.length + 1;
-            let nextColName = "col" + nextID;
-            console.log(nextID);
-            previousArea.push(
-                {colName:nextColName}
-            )
-            console.log(previousArea);
-            this.setState(
-            previousArea
-            )
-           console.log(this.state);
+            this.props.addNewCol(e);
+
+        }
+        onDragOver = (ev) => {
+         this.props.onDragOver(ev);
+        }
+
+        onDrop = (ev) => {
+            this.props.onDrop(ev);
 
         }
 
@@ -91,7 +36,7 @@ export default class ExpandableLayout extends Component{
 
 
 
-            this.state.gridSpace.forEach((gs) =>
+            this.props.gridSpace.forEach((gs) =>
             {
                 gs.area.forEach((a) => 
                 {
@@ -99,6 +44,8 @@ export default class ExpandableLayout extends Component{
                         <Col
                         className="GridSpace"
                         // xs="auto"
+                        onDragOver={((e)=>this.onDragOver(e))}
+                        onDrop={(e)=>this.onDrop(e, "complete")}
                         key={a.rowName}
                         >
                             text
