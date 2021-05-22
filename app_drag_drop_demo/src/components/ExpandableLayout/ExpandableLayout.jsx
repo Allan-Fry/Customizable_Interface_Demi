@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Button, Col, Container, Row } from "reactstrap";
+import { Button, Col, Container, Row, Toast, ToastHeader } from "reactstrap";
 import'./ExpandableLayout.css';
 
 
@@ -16,7 +16,8 @@ export default class ExpandableLayout extends Component{
          this.props.onDragOver(ev);
         }
 
-        onDrop = (ev) => {
+        onDrop = (ev, col) => {
+            console.log(ev, col);
             this.props.onDrop(ev);
 
         }
@@ -33,7 +34,28 @@ export default class ExpandableLayout extends Component{
 
 
             }
+            var tasks ={
+                placed:[]
+            }
+            this.props.tasks.forEach((t) =>{
+                if(t.category==='placed'){
+                    tasks['placed'].push(
+                        <Toast    
+                        draggable
+                        //onDragStart = {(e) => this.onDragStart(e, t.name)}
+                        className="draggable"
+                        style={{backgroundColor: t.bgcolor}}
+                        >
+                            <ToastHeader>
+                               {t.ToastHeader}
+                            </ToastHeader>
+                        </Toast>
 
+                    )
+                }
+
+
+            })
 
 
             this.props.gridSpace.forEach((gs) =>
@@ -45,10 +67,19 @@ export default class ExpandableLayout extends Component{
                         className="GridSpace"
                         // xs="auto"
                         onDragOver={((e)=>this.onDragOver(e))}
-                        onDrop={(e)=>this.onDrop(e, "complete")}
+                        onDrop={(e)=>this.onDrop(e, gs.area.colName)}
                         key={a.rowName}
                         >
-                            text
+                           <Toast    
+                            draggable
+                            //onDragStart = {(e) => this.onDragStart(e, t.name)}
+                            className="draggable"
+                            //style={{backgroundColor: bgcolor}}
+                            >
+                                <ToastHeader>
+                                   
+                                </ToastHeader>
+                            </Toast>
                         </Col>
                     )
 
@@ -74,6 +105,17 @@ export default class ExpandableLayout extends Component{
                 )
 
             });
+
+            this.props.tasks.forEach((t) => 
+        {
+          tasks["placed"].push(
+            <Row>
+            <Col />
+                
+            <Col />
+            </Row>
+          )  
+        });
 
 
             return(
