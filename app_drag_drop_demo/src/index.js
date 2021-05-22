@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 //import AppDragDropDemo from './components/AppDragDropDemo/AppDragDropDemo';
-import CustomToast from './components/CustomToast/CustomToast';
+//import CustomToast from './components/CustomToast/CustomToast';
+//import ExpandableLayout from './components/ExpandableLayout/ExpandableLayout';
 import reportWebVitals from './reportWebVitals';
+import EditPage from './components/EditPage/EditPage';
 
 
 
 ReactDOM.render
 (
-  <CustomToast />,
+  <EditPage />,
    document.getElementById
    (
      "root"
