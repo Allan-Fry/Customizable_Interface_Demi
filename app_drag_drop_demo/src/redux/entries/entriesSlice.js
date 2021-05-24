@@ -21,9 +21,17 @@ const entriesSlice = createSlice(
         name: 'entries',
         initialState,
         reducers:{
-
+            entryUpdate(state, action) {
+                const { id, title, tags, description} = action.payload;
+                const existingEntry = state.find(entry => entry.id ===id);
+            if (existingEntry) {
+                existingEntry.description = description;
+            }
+            }
         }
     }
 );
+
+export const {entryUpdate} = entriesSlice.actions;
 
 export default entriesSlice.reducer;
