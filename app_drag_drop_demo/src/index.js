@@ -7,12 +7,16 @@ import './index.css';
 //import ExpandableLayout from './components/ExpandableLayout/ExpandableLayout';
 import reportWebVitals from './reportWebVitals';
 import EditPage from './components/EditPage/EditPage';
-
-
+import { store } from './redux/store.js';
+import { Provider } from 'react-redux';
 
 ReactDOM.render
 (
-  <EditPage />,
+  <React.StrictMode>
+    <Provider store={store}>
+      <EditPage />
+    </ Provider>
+  </React.StrictMode>,
    document.getElementById
    (
      "root"
