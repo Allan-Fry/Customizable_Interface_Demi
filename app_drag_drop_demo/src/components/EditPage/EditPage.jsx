@@ -2,6 +2,7 @@
 import { Component } from "react";
 import { Button, Col, Container, Toast, ToastHeader, UncontrolledCollapse } from "reactstrap";
 import AppDragDropDemo from "../AppDragDropDemo/AppDragDropDemo";
+import Entry from "../Entry/Entry";
 import ExpandableLayout from "../ExpandableLayout/ExpandableLayout";
 
 
@@ -164,6 +165,7 @@ export default class EditPage extends Component{
         return(
 
                 <Container>
+                    <Entry></Entry>
                     <Button color="primary" id="toggler" style={{ marginBottom: '1rem' }}>
                         Toggle
                     </Button>
