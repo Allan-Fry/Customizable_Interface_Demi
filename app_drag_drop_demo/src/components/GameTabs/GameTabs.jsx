@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
 import classnames from 'classnames';
 import { ContentSpace } from "../ContentSpace/ContentSpace";
+import { NavTab } from "./SingleTab";
 
-
-
-
-const GameSpaceTab = (props) =>{
+export const GameTabs = (props) =>{
 
     const [activeTab, setActiveTab] = useState('1');
     const toggle = tab => {
@@ -34,23 +32,11 @@ const GameSpaceTab = (props) =>{
             </NavItem>
           </Nav>
           <TabContent activeTab={activeTab}>
-            <TabPane tabId="1">
-              <Row>
-                <Col sm="12">
-                  <ContentSpace />
-                </Col>
-              </Row>
-            </TabPane>
-            <TabPane tabId="2">
-              <Row>
-                <Col sm="6">
-                </Col>
-              </Row>
-            </TabPane>
+            <NavTab />
+            <NavTab />
           </TabContent>
         </Container>
       );
    
 
 }
-export default GameSpaceTab;

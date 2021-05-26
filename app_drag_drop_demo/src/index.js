@@ -2,12 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-//import AppDragDropDemo from './components/AppDragDropDemo/AppDragDropDemo';
-//import CustomToast from './components/CustomToast/CustomToast';
-//import ExpandableLayout from './components/ExpandableLayout/ExpandableLayout';
 import reportWebVitals from './reportWebVitals';
-// import EditPage from './components/EditPage/EditPage';
-import GameSpaceTab from "./components/GameSpaceTab/GameSpaceTab";
+import App from './App';
 import { store } from './redux/store.js';
 import { Provider } from 'react-redux';
 
@@ -15,7 +11,7 @@ ReactDOM.render
 (
   <React.StrictMode>
     <Provider store={store}>
-      <GameSpaceTab />
+      <App />
     </ Provider>
   </React.StrictMode>,
    document.getElementById
