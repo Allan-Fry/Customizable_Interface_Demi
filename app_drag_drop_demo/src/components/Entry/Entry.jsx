@@ -12,7 +12,7 @@ import EntryCards from "./EntryCard";
 
 
     const renderedEntries = entries.map(entry =>(
-        <EntryCards entryKey={entry.id} />
+        <EntryCards entryKey={entry} />
      ));
 
     return(

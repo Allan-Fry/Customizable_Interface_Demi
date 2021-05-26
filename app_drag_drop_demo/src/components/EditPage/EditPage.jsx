@@ -3,99 +3,47 @@ import { Component } from "react";
 import { Button, Col, Container, Toast, ToastHeader, UncontrolledCollapse } from "reactstrap";
 import AppDragDropDemo from "../AppDragDropDemo/AppDragDropDemo";
 import Entry from "../Entry/Entry";
-import ExpandableLayout from "../ExpandableLayout/ExpandableLayout";
+import { ExpandableLayout } from "../ExpandableLayout/ExpandableLayout";
+import { useSelector } from 'react-redux';
 
 
 
 
-export default class EditPage extends Component{
+const EditPage= () =>{
+    const gridSpace = useSelector(state => state.gridSpace);
+    // state = {
+    //     gridSpace: [
+    //     ],
+    //     tasks: [
+    //         {
+    //             name:"Learn Angular",
+    //             category:"unPlaced",              
+    //             bgcolor: "yellow"
+    //         },
+    //         {
+    //             name:"React",              
+    //             category:"unPlaced",              
+    //             bgcolor:"pink"
+    //         },
+    //         {
+    //             name:"Vue",              
+    //             category:"unPlaced",              
+    //             bgcolor:"skyblue"}],
 
-    state = {
-        gridSpace: [
-            {
-                pageName:"firstPage",
-                rowID:"0",
-                area:[{
-                    colName:"col1",
-                    content:[]
-                },
-                {
-                    colName:"col2",
-                    content:[]
-                },
-                {
-                    colName:"col3",
-                    content:[]
-                }
-                ]
-            },
-            {
-                pageName:"firstPage",
-                rowID:"1",
-                area:[{
-                    colName:"col1",
-                    content:[]
-                },
-                {
-                    colName:"col2",
-                    content:[]
-                },
-                {
-                    colName:"col3",
-                    content:[]
-                }
-                ]
-            },
-            {
-                pageName:"firstPage",
-                rowID:"2",
-                area:[{
-                    colName:"col1",
-                    content:[]
-                },
-                {
-                    colName:"col2",
-                    content:[]
-                },
-                {
-                    colName:"col3",
-                    content:[]
-                }
-                ]
-            }
-
-
-        ],
-        tasks: [
-            {
-                name:"Learn Angular",
-                category:"unPlaced",              
-                bgcolor: "yellow"
-            },
-            {
-                name:"React",              
-                category:"unPlaced",              
-                bgcolor:"pink"
-            },
-            {
-                name:"Vue",              
-                category:"unPlaced",              
-                bgcolor:"skyblue"}],
-
-        toasts: [
+    //     toasts: [
             
-        ]
-    }
-    onDragOver = (ev) => {
+    //     ]
+    // }
+    const onDragOver = (ev) => {
         ev.preventDefault();
-    }
+    };
 
-    onDragStart = (ev, id) => {
+    const onDragStart = (ev, id) => {
         console.log('dragstart:',id);
         ev.dataTransfer.setData("id", id);
-    }
-    onDrop = (ev, col) => {
-        // let id = ev.dataTransfer.getData("id");
+    };
+    const onDrop = (ev, col) => {
+        let id = ev.dataTransfer.getData("id");
         // let toasts = this.state.toasts[id];
         
         // let area = this.state.gridSpace[id].area.filter((area) => {
@@ -109,9 +57,9 @@ export default class EditPage extends Component{
         //     ...this.state,
         //     area
         // });
-    }    
-    addNewCol = (e) =>{
-        let previousArea = this.state.gridSpace[e].area;
+    };    
+    const addNewCol = (e) =>{
+        let previousArea = gridSpace[e].area;
         let nextID = previousArea.length + 1;
         let nextColName = "col" + nextID;
         console.log(nextID);
@@ -124,76 +72,76 @@ export default class EditPage extends Component{
         )
        console.log(this.state);
 
-    }
+    };
 
 
-    createToasts = (e) =>{
+    const createToasts = (e) =>{
 
-        this.state.tasks.forEach((t) => 
-        {
-          this.state["toasts"].push(
-            <Col
-            key={this.state.toasts.length}
-            onDragStart = {(e) => this.onDragStart(e, this.state.toasts.length)}
-            >
-            <Col />
-                <Toast    
-                    draggable
+        // this.state.tasks.forEach((t) => 
+        // {
+        //   this.state["toasts"].push(
+        //     <Col
+        //     key={this.state.toasts.length}
+        //     onDragStart = {(e) => this.onDragStart(e, this.state.toasts.length)}
+        //     >
+        //     <Col />
+        //         <Toast    
+        //             draggable
                     
-                    className="draggable"
-                    style={{backgroundColor: t.bgcolor}}
-            >
-                    <ToastHeader>
-                        {t.name}
-                    </ToastHeader>
-                </Toast>
-            <Col />
-            </Col>
-          )  
-        });
+        //             className="draggable"
+        //             style={{backgroundColor: t.bgcolor}}
+        //     >
+        //             <ToastHeader>
+        //                 {t.name}
+        //             </ToastHeader>
+        //         </Toast>
+        //     <Col />
+        //     </Col>
+        //   )  
+        // });
 
-    }
-        viewToasts = (e) =>{
+    };
+    const viewToasts = (e) =>{
 
-            console.log(this.state.toasts);
-        }
+            // console.log(this.state.toasts);
+        };
     
-
-    render(){
-
 
         return(
 
                 <Container>
-                    <Entry></Entry>
-                    <Button color="primary" id="toggler" style={{ marginBottom: '1rem' }}>
+                    {/* <Entry></Entry> */}
+                    <Button 
+                    color="primary" 
+                    id="toggler" 
+                    className="toggleButton">
                         Toggle
                     </Button>
                     <UncontrolledCollapse toggler="#toggler">
-                        <AppDragDropDemo
+                        {/* <AppDragDropDemo
                         draggable
-                        tasks={this.state.tasks}
-                        onDragStart = {this.onDragStart}
-                        toasts={this.state.toasts}
+                        // tasks={this.state.tasks}
+                        onDragStart = {onDragStart}
+                        //toasts={this.state.toasts}
                         >
-                        </AppDragDropDemo>
+                        </AppDragDropDemo> */}
                     </UncontrolledCollapse>
                     <ExpandableLayout
-                    onDragOver={this.onDragOver}
-                    onDrop={this.onDrop}
-                    gridSpace={this.state.gridSpace}
-                    addNewCol={this.addNewCol}
-                    tasks={this.state.tasks}
+                    onDragOver={onDragOver}
+                    onDrop={onDrop}
+                    gridSpace={gridSpace}
+                    addNewCol={addNewCol}
+                    //tasks={this.state.tasks}
                     >
 
                     </ExpandableLayout>
                     <Button
-                    onClick={((e)=>this.createToasts(e))}
+                    onClick={createToasts}
                     >
                         Create Toast
                     </Button>
                     <Button
-                    onClick={((e)=>this.viewToasts(e))}
+                    onClick={viewToasts}
                     >
                         View Toast
                     </Button>
@@ -202,8 +150,7 @@ export default class EditPage extends Component{
         );
 
 
-    };
-
 
 
 }
+export default EditPage;

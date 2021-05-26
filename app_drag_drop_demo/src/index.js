@@ -6,7 +6,8 @@ import './index.css';
 //import CustomToast from './components/CustomToast/CustomToast';
 //import ExpandableLayout from './components/ExpandableLayout/ExpandableLayout';
 import reportWebVitals from './reportWebVitals';
-import EditPage from './components/EditPage/EditPage';
+// import EditPage from './components/EditPage/EditPage';
+import GameSpaceTab from "./components/GameSpaceTab/GameSpaceTab";
 import { store } from './redux/store.js';
 import { Provider } from 'react-redux';
 
@@ -14,7 +15,7 @@ ReactDOM.render
 (
   <React.StrictMode>
     <Provider store={store}>
-      <EditPage />
+      <GameSpaceTab />
     </ Provider>
   </React.StrictMode>,
    document.getElementById

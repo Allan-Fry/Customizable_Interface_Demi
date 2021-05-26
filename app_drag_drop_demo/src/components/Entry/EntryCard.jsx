@@ -3,13 +3,13 @@ import { Button, Container, Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {entryUpdate} from '../../redux/entries/entriesSlice';
 
-const EntryCards = ({match}) =>{
+const EntryCards = ({entry}) =>{
     const [toggle, setToggle] = useState(true);
-    const { entryID } = match.params;
+    
 
-    const entry = useSelector(state =>
-        state.entries.find( entries => entries.id === entryID)
-        );
+    // const entry = useSelector(state =>
+    //     state.entries.find( entries => entries.id === entryID)
+    //     );
 
     // const [description, setDescription] = useState(this.state.entry.description);
     
@@ -35,7 +35,7 @@ const EntryCards = ({match}) =>{
         <Toast 
         // key={entry.id}
         >
-            {/* <ToastHeader>
+            <ToastHeader>
                 {entry.title}
            
             </ToastHeader>
@@ -49,12 +49,13 @@ const EntryCards = ({match}) =>{
                 <Container>
                     <input type="text"
                     value={entry.description} 
-                    onChange={onDescriptionChange}/>
+                    //onChange={onDescriptionChange}
+                    />
                     <Button 
                     onClick={onClick}
                     />
                 </Container>
-            )} */}
+            )}
             <Button onClick={onClick}></Button>
         </Toast>
 

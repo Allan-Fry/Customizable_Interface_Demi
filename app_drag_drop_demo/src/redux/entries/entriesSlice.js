@@ -24,9 +24,11 @@ const entriesSlice = createSlice(
             entryUpdate(state, action) {
                 const { id, title, tags, description} = action.payload;
                 const existingEntry = state.find(entry => entry.id ===id);
-            if (existingEntry) {
-                existingEntry.description = description;
-            }
+                if (existingEntry) {
+                    existingEntry.description = description;
+                    existingEntry.title = title;
+                    existingEntry.tags = tags;
+                }
             }
         }
     }

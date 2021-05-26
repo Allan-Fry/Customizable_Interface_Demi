@@ -1,132 +1,114 @@
 import { Component } from "react";
+import { useSelector } from 'react-redux';
 import { Button, Col, Container, Row, Toast, ToastHeader } from "reactstrap";
 import'./ExpandableLayout.css';
 
 
-export default class ExpandableLayout extends Component{
+export const ExpandableLayout = ({gridSpace}) => {
 
+        const entries = useSelector(state => state.entries);
 
-
-
-        addNewCol = (e) =>{
+        const addNewCol = (e) =>{
             this.props.addNewCol(e);
 
         }
-        onDragOver = (ev) => {
+        const onButtonPress = (e) =>{
+            console.log(this.mapStateToProps.entries);
+        }
+        const onDragOver = (ev) => {
          this.props.onDragOver(ev);
         }
 
-        onDrop = (ev, col) => {
+        const onDrop = (ev, col) => {
             console.log(ev, col);
             this.props.onDrop(ev);
-
         }
 
-        render(){
-
-            var gridSpace ={
-                firstPage:[]
-            }
-            var rows ={
-                0:[],
-                1:[],
-                2:[]
-
-
-            }
-            var tasks ={
-                placed:[]
-            }
-            this.props.tasks.forEach((t) =>{
-                if(t.category==='placed'){
-                    tasks['placed'].push(
-                        <Toast    
-                        draggable
-                        //onDragStart = {(e) => this.onDragStart(e, t.name)}
-                        className="draggable"
-                        style={{backgroundColor: t.bgcolor}}
-                        >
-                            <ToastHeader>
-                               {t.ToastHeader}
-                            </ToastHeader>
-                        </Toast>
-
-                    )
-                }
+       
+            // var tasks ={
+            //     placed:[]
+            // }
+            // this.props.tasks.forEach((t) =>{
+            //     if(t.category==='placed'){
+            //         tasks['placed'].push(
+            //             <Toast    
+            //             draggable
+            //             //onDragStart = {(e) => this.onDragStart(e, t.name)}
+            //             className="draggable"
+            //             style={{backgroundColor: t.bgcolor}}
+            //             >
+            //                 <ToastHeader>
+            //                    {t.ToastHeader}
+            //                 </ToastHeader>
+            //             </Toast>
+            //         )
+            //     }
+            // })
 
 
-            })
-
-
-            this.props.gridSpace.forEach((gs) =>
-            {
-                gs.area.forEach((a) => 
-                {
-                    rows[gs.rowID].push(
+           const renderedRows = gridSpace.map(gs =>
+            (
+                <Row>
+                    {gs.area.map(a => (
                         <Col
                         className="GridSpace"
-                        // xs="auto"
-                        onDragOver={((e)=>this.onDragOver(e))}
-                        onDrop={(e)=>this.onDrop(e, gs.area.colName)}
+                        xs="auto"
+                        onDragOver={onDragOver}
+                        onDrop={(e)=>onDrop(e, gs.area.colName)}
                         key={a.rowName}
                         >
-                           <Toast    
-                            draggable
-                            //onDragStart = {(e) => this.onDragStart(e, t.name)}
-                            className="draggable"
-                            //style={{backgroundColor: bgcolor}}
-                            >
-                                <ToastHeader>
+                        Test
+                        </Col>
+                    ))}
+                </Row>
+            ));
+                    // rows[gs.rowID].push(
+                    //     <Col
+                    //     
+                    //     >
+                    //        <Toast    
+                    //         draggable
+                    //         //onDragStart = {(e) => this.onDragStart(e, t.name)}
+                    //         className="draggable"
+                    //         //style={{backgroundColor: bgcolor}}
+                    //         >
+                    //             <ToastHeader>
                                    
-                                </ToastHeader>
-                            </Toast>
-                        </Col>
-                    )
+                    //             </ToastHeader>
+                    //         </Toast>
+                    //     </Col>
+                    // )
+                // });
+                // gridSpace[gs.pageName].push(
+                //     <Row 
+                //     key={gs.rowID}
+                //     >
+                //         {rows[gs.rowID]}
+                //         <Col 
+                //         xs='1'
+                //         >
+                //         <Button onClick= {(e) => this.addNewCol(gs.rowID)}>
+                //             +
+                //         </Button>
+                //         </Col>
+                //     </Row>
 
+                // )
 
-                });
-
-
-
-                gridSpace[gs.pageName].push(
-                    <Row 
-                    key={gs.rowID}
-                    >
-                        {rows[gs.rowID]}
-                        <Col 
-                        xs='1'
-                        >
-                        <Button onClick= {(e) => this.addNewCol(gs.rowID)}>
-                            +
-                        </Button>
-                        </Col>
-                    </Row>
-
-                )
-
-            });
-
-            this.props.tasks.forEach((t) => 
-        {
-          tasks["placed"].push(
-            <Row>
-            <Col />
-                
-            <Col />
-            </Row>
-          )  
-        });
+            // });
 
 
             return(
 
                 <Container>
-                        {gridSpace.firstPage}               
+                        {renderedRows} 
+                        <Button 
+                        onClick={onButtonPress}
+                        ></Button>              
                 </Container>
 
             );
 
-        }
 
 
 
