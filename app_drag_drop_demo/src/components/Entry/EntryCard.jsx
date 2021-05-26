@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Container, Toast, ToastBody, ToastHeader } from 'reactstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import {entryUpdate} from '../../redux/entries/entriesSlice';
+import { useDispatch } from 'react-redux';
+import { entryUpdate } from '../../redux/entries/entriesSlice';
 
 const EntryCards = ({entry}) =>{
     const [toggle, setToggle] = useState(true);

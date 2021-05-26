@@ -1,6 +1,6 @@
-import { Component } from "react";
+import React from "react";
 import { useSelector } from 'react-redux';
-import { Button, Col, Container, Row, Toast, ToastHeader } from "reactstrap";
+import { Button, Col, Container, Row } from "reactstrap";
 import'./ExpandableLayout.css';
 
 
@@ -24,26 +24,6 @@ export const ExpandableLayout = ({gridSpace}) => {
             this.props.onDrop(ev);
         }
 
-       
-            // var tasks ={
-            //     placed:[]
-            // }
-            // this.props.tasks.forEach((t) =>{
-            //     if(t.category==='placed'){
-            //         tasks['placed'].push(
-            //             <Toast    
-            //             draggable
-            //             //onDragStart = {(e) => this.onDragStart(e, t.name)}
-            //             className="draggable"
-            //             style={{backgroundColor: t.bgcolor}}
-            //             >
-            //                 <ToastHeader>
-            //                    {t.ToastHeader}
-            //                 </ToastHeader>
-            //             </Toast>
-            //         )
-            //     }
-            // })
 
 
            const renderedRows = gridSpace.map(gs =>
@@ -62,40 +42,6 @@ export const ExpandableLayout = ({gridSpace}) => {
                     ))}
                 </Row>
             ));
-                    // rows[gs.rowID].push(
-                    //     <Col
-                    //     
-                    //     >
-                    //        <Toast    
-                    //         draggable
-                    //         //onDragStart = {(e) => this.onDragStart(e, t.name)}
-                    //         className="draggable"
-                    //         //style={{backgroundColor: bgcolor}}
-                    //         >
-                    //             <ToastHeader>
-                                   
-                    //             </ToastHeader>
-                    //         </Toast>
-                    //     </Col>
-                    // )
-                // });
-                // gridSpace[gs.pageName].push(
-                //     <Row 
-                //     key={gs.rowID}
-                //     >
-                //         {rows[gs.rowID]}
-                //         <Col 
-                //         xs='1'
-                //         >
-                //         <Button onClick= {(e) => this.addNewCol(gs.rowID)}>
-                //             +
-                //         </Button>
-                //         </Col>
-                //     </Row>
-
-                // )
-
-            // });
 
 
             return(

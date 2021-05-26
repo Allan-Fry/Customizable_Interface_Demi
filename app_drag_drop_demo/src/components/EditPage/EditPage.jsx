@@ -1,4 +1,3 @@
-
 import { Component } from "react";
 import { Button, Col, Container, Toast, ToastHeader, UncontrolledCollapse } from "reactstrap";
 import AppDragDropDemo from "../AppDragDropDemo/AppDragDropDemo";
@@ -11,29 +10,7 @@ import { useSelector } from 'react-redux';
 
 const EditPage= () =>{
     const gridSpace = useSelector(state => state.gridSpace);
-    // state = {
-    //     gridSpace: [
-    //     ],
-    //     tasks: [
-    //         {
-    //             name:"Learn Angular",
-    //             category:"unPlaced",              
-    //             bgcolor: "yellow"
-    //         },
-    //         {
-    //             name:"React",              
-    //             category:"unPlaced",              
-    //             bgcolor:"pink"
-    //         },
-    //         {
-    //             name:"Vue",              
-    //             category:"unPlaced",              
-    //             bgcolor:"skyblue"}],
-
-    //     toasts: [
-            
-    //     ]
-    // }
+    
     const onDragOver = (ev) => {
         ev.preventDefault();
     };

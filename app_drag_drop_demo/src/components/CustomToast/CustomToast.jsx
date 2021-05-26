@@ -103,26 +103,6 @@ export default class CustomToast extends Component{
 
 
                     </ToastCard>
-                    // <Toast 
-                    // 
-                    // onDragOver={(e)=>this.onDragOver(e)}
-                    // onDrop={(e)=>{this.onDropHeader(e, t.header, t.toastID)}}
-                  
-                    // >
-                    //     <ToastHeader
-                    //     draggable
-                    //     onDragStart = {(e) => this.onDragStart(e, t.header, t.toastID)}
-                    //     >
-                    //         {t.header}
-                    //     </ToastHeader>
-                    //     <ToastBody
-                        
-                    //     >
-                    //         {t.body}
-                    //     </ToastBody>
-                    // </Toast>
-
-
                 )
 
                 

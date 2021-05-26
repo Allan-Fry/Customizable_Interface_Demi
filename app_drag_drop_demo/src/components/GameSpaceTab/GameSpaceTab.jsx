@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
 import classnames from 'classnames';
-import EditPage from '../EditPage/EditPage';
 import { ContentSpace } from "../ContentSpace/ContentSpace";
 
 
@@ -10,14 +9,10 @@ import { ContentSpace } from "../ContentSpace/ContentSpace";
 const GameSpaceTab = (props) =>{
 
     const [activeTab, setActiveTab] = useState('1');
-
     const toggle = tab => {
         if(activeTab !== tab) setActiveTab(tab);
     
-    };
-
-        
-        
+    }; 
     return (
         <Container>
           <Nav tabs>

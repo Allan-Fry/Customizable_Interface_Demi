@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Toast, ToastBody, ToastHeader } from "reactstrap";
+import { Container } from "reactstrap";
 import { useSelector } from 'react-redux';
 import EntryCards from "./EntryCard";
 
