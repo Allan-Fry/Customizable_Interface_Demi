@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
+import { Container, Nav, NavItem, NavLink, TabContent } from "reactstrap";
 import classnames from 'classnames';
-import { ContentSpace } from "../ContentSpace/ContentSpace";
 import { NavTab } from "./SingleTab";
 
 export const GameTabs = (props) =>{
