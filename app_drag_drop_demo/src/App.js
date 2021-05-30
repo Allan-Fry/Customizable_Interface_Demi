@@ -10,6 +10,7 @@ import { Container } from 'reactstrap';
 import { NavBar } from './components/NavBar/NavBar';
 import './App.css';
 import { editPage } from './pages/editPage/editPage';
+import { JoinPage } from './pages/joinPage/JoinPage';
 
 function App() {
   
@@ -20,16 +21,11 @@ function App() {
           <NavBar>
           </NavBar>
           <Switch>
-          
-          <Route path="/join">
-            <div>Join</div>
-          </Route>
+          <Route path="/join" component={JoinPage} />
           <Route path="/account">
             <div>Account</div>
           </Route>
-          <Route path="/" component={editPage}>
-            
-          </Route>
+          <Route path="/" component={editPage} />
           </Switch>
         </Router>
       </Container>

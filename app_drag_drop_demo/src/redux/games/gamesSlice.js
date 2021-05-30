@@ -6,15 +6,17 @@ const initialState =[
         gamePages:[
             "firstGame",
             "lateGame"
-        ]
+        ],
+        gameDescription:'This is a game.'
         
     },
     {
-        pageName:'D&D',
+        gameName:'D&D',
         gamePages:[
             "Goblins",
             "Evil"
-        ]
+        ],
+        gameDescription:'This is a game.'
     }
 ];
 
