@@ -4,7 +4,7 @@ import { GameTabs } from '../../components/GameTabs/GameTabs';
 
 
 
-export const editPage = () =>{
+export const EditPage = () =>{
 
 
     return(

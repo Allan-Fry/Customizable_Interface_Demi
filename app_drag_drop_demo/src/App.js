@@ -9,8 +9,8 @@ import {
 import { Container } from 'reactstrap';
 import { NavBar } from './components/NavBar/NavBar';
 import './App.css';
-import { editPage } from './pages/editPage/editPage';
-import { JoinPage } from './pages/joinPage/JoinPage';
+import { EditPage } from './pages/EditPage/EditPage';
+import { JoinPage } from './pages/JoinPage/JoinPage';
 
 function App() {
   
@@ -25,7 +25,7 @@ function App() {
           <Route path="/account">
             <div>Account</div>
           </Route>
-          <Route path="/" component={editPage} />
+          <Route path="/" component={EditPage} />
           </Switch>
         </Router>
       </Container>
