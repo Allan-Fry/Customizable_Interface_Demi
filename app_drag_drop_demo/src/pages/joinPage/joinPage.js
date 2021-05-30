@@ -7,7 +7,6 @@ import { GameCard } from '../../components/GameCard/GameCard';
 export const JoinPage = () =>{
     const games = useSelector(state => state.games);
     const renderedGames = games.map(game =>(
-        
             <GameCard Header={game.gameName} Description={game.gameDescription}></GameCard>
         )
         );

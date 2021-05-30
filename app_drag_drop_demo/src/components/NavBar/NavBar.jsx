@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 import './NavBar.css';
+import { useSelector } from 'react-redux';
 
 export const NavBar = () =>{
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(!dropdownOpen);
-
+    const games = useSelector(state => state.games)
+    const renderedGame = games.map(game => (
+        <DropdownItem href="/">{game.gameName}</DropdownItem>
+    ));
     return(
         <Nav className='navbar'>
             <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
@@ -14,8 +18,7 @@ export const NavBar = () =>{
                 </DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem header>Choice A Game</DropdownItem>
-                    <DropdownItem href="/">Pathfinder</DropdownItem>
-                    <DropdownItem>D&D</DropdownItem>
+                    {renderedGame}
                 </DropdownMenu>
             </Dropdown>
             <NavItem>
