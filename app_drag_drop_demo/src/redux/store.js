@@ -3,6 +3,7 @@ import accountSlice from './account/accountSlice';
 import entriesReducer from "./entries/entriesSlice";
 import gamesSlice from './games/gamesSlice';
 import gridsReducer from "./grids/gridsSlice";
+import tabsSlice from './tabs/tabsSlice';
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
         entries: entriesReducer,
         grids: gridsReducer,
         games: gamesSlice,
-        accounts: accountSlice
+        accounts: accountSlice,
+        tabs: tabsSlice
     },
 });
