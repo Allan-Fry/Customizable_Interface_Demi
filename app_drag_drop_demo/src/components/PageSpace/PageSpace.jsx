@@ -1,21 +1,28 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 import { useSelector } from 'react-redux';
 
 
 export const PageSpace = (props) =>{
-    const gameTab = useSelector(
+    const tab = useSelector(
                                 state => state.tabs.find(
-                                                            gameTab => gameTab.gamePage === props.gamePage
+                                                            tab => tab.gamePage === props.gamePage
                                                         )
                                 );
                                 
-    const renderedRows = gameTab.area.map
+    const renderedRows = tab.area[0].rows.map
                                             (
-                                                a => 
+                                                row => 
                                                     (
                                                         <Row>
-                                                            Test
+                                                           {row.col.map
+                                                                (
+                                                                    col =>
+                                                                            (
+                                                                                <Col>Test</Col>
+                                                                            )
+                                                                )
+                                                                }
                                                         </Row>
                                                     )
                                             );

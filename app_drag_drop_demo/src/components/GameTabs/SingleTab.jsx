@@ -1,15 +1,16 @@
 import React from 'react';
 import { Col, Row, TabPane } from 'reactstrap';
-import { ContentSpace } from '../ContentSpace/ContentSpace';
+import { PageSpace } from '../PageSpace/PageSpace';
 
 
-export const NavTab = () =>{
+
+export const NavTab = (props) =>{
 
     return(
         <TabPane tabId="1">
               <Row>
                 <Col sm="12">
-                  <ContentSpace />
+                  <PageSpace gamePage={props.gamePage} />
                 </Col>
               </Row>
         </TabPane>
